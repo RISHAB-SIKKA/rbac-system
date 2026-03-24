@@ -49,7 +49,7 @@ class authService {
                 sub: userId,
             };
             const options = {
-                expiresIn: parseInt(config.jwt.jwtExpiration, 10),
+                expiresIn: config.jwt.jwtExpiration as jwt.SignOptions["expiresIn"],
                 issuer: config.jwt.issuer,
                 audience: config.jwt.audience,
             } as jwt.SignOptions; 

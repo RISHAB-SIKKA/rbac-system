@@ -1,9 +1,10 @@
-import express = require('express');
 import dotenv = require('dotenv');
-import pool = require('./config/db');
-import routes = require('./routes/routes');
 
 dotenv.config();
+
+import express = require('express');
+import pool = require('./config/db');
+import routes = require('./routes/routes');
 
 const app = express();
 app.use(express.json());
