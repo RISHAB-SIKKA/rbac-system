@@ -1,6 +1,7 @@
 import express = require('express');
 import dotenv = require('dotenv');
 import pool = require('./config/db');
+import routes = require('./routes/routes');
 
 dotenv.config();
 
@@ -16,6 +17,8 @@ app.get('/health', async (_req, res) => {
     time: result.rows[0],
   });
 });
+
+app.use('/api/v1', routes.router);
 
 app.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);
