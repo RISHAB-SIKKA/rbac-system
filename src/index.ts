@@ -19,7 +19,7 @@ app.get('/health', async (_req, res) => {
   });
 });
 
-app.use('/api/v1', routes.router);
+app.use('/api/v1', routes.allRoutes);
 
 app.listen(port, () => {
   console.log(`🚀 Server running on port ${port}`);

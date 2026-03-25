@@ -7,4 +7,4 @@ const router = express.Router();
 router.use("/auth", authRoutes.authRouter);
 router.use("/users", userRoutes.userRouter);
 
-export = { router };
+export = { allRoutes: router };
