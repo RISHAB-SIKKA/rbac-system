@@ -8,7 +8,7 @@ import rateLimiterMiddleware = require("../middleware/rateLimiter.middleware");
 const userRouter = express.Router();
 
 
-const limiter = rateLimiterFactory.rateLimiterFactory.createLimiter(
+const limiter = rateLimiterFactory.createLimiter(
     "FIXED_WINDOW", 
     "user_post_deletion", 
     { 

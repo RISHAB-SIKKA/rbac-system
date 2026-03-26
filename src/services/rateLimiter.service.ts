@@ -1,5 +1,6 @@
 import FixedWindowStrategy = require("../utils/rateLimiter/fixedWindow");
 import rateLimiterStrategy = require("../utils/rateLimiter/rateLimiterStrategy");
+import tokenBucket  = require("../utils/rateLimiter/tokenbucket")
 
 class rateLimiterFactory {
     public static createLimiter(
@@ -12,12 +13,12 @@ class rateLimiterFactory {
                 return FixedWindowStrategy.getInstance(name, options);
             // case "SLIDING_WINDOW":
             //     return SlidingWindowStrategy.getInstance(name, options);
-            // case "TOKEN_BUCKET":
-            //     return TokenBucketStrategy.getInstance(name, options);
+            case "TOKEN_BUCKET":
+                return tokenBucket.getInstance(name, options);
             default:
                 throw new Error(`Unsupported rate limiter type: ${type}`);
         }
     }
 }
 
-export = { rateLimiterFactory };
+export = rateLimiterFactory;
