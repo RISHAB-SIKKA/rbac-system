@@ -15,12 +15,21 @@ const globalRateLimiter = rateLimiterFactory.createLimiter(
     }
 );
 
-authRouter.use(rateLimiterMiddleware.rateLimiterMiddleware(globalRateLimiter)) 
+const loginRateLimiter = rateLimiterFactory.createLimiter(
+    "LEAKY_BUCKET",
+    "LOGIN",
+    {
+        capacity: 5,
+        leakRate: 0.05
+    }
+);
+
+// authRouter.use(rateLimiterMiddleware.rateLimiterMiddleware(globalRateLimiter)) 
+authRouter.use(rateLimiterMiddleware.rateLimiterMiddleware(loginRateLimiter)) 
 
 authRouter.post("/register", userControllerModule.register)
 authRouter.post(
-    "/login", 
-
+    "/login",
     authControllerModule.login
 )
 
